@@ -1,0 +1,26 @@
+services:
+    mysqlnest:
+        image: mysql:8
+        ports:
+            - 3307:3306
+        volumes:
+            - db_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 123
+            MYSQL_DATABASE: test
+        networks:
+            - miredtest
+        restart: always
+    nest_back:
+        build: ./NEST-CRUD
+        env_file:
+            - ./NEST-CRUD/.env
+        ports:
+            - 3000:3000
+        networks:
+            - miredtest
+        restart: always
+networks:
+    miredtest: {}
+volumes:
+    db_data: {}
