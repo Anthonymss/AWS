@@ -1,0 +1,6 @@
+script.bat
+/.idea
+/target/
+target/
+*/target/
+.env
